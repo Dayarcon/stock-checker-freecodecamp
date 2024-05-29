@@ -15,10 +15,15 @@ const app = express();
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(
   helmet.contentSecurityPolicy({
-    directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "https://code.jquery.com/jquery-2.2.1.min.js"],
-      styleSrc: ["'self'"],
+       scriptSrc: ["'self'", "https://code.jquery.com/jquery-2.2.1.min.js"],
+       styleSrc: ["'self'"],
+       imgSrc: ["'self'", 'data:'], // Allow images from self and data URIs
+       connectSrc: ["'self'"],
+       fontSrc: ["'self'"],
+       objectSrc: ["'none'"],
+       frameAncestors: ["'none'"],
+       upgradeInsecureRequests: [],
     }
 })
 );
